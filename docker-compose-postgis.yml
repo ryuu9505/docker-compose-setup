@@ -1,0 +1,20 @@
+services:
+  postgres-main:
+    image: postgis/postgis
+    container_name: postgres-main
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: P@ssw0rd
+    volumes:
+      - volume-postgres-main:/var/lib/postgresql/data
+    networks:
+      - net-dev
+
+volumes:
+  volume-postgres-main:
+
+networks:
+  net-dev:
+    driver: bridge

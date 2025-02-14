@@ -1,0 +1,25 @@
+services:
+  influxdb:
+    image: influxdb:2.7.1
+    container_name: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=P@ssw0rd
+      - DOCKER_INFLUXDB_INIT_ORG=test
+      - DOCKER_INFLUXDB_INIT_BUCKET=test
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=T0k3n
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+    networks:
+      - net-dev
+
+volumes:
+  influxdb-data:
+
+networks:
+  net-dev:
+    driver: bridge
