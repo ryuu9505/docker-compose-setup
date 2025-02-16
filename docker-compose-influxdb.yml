@@ -8,10 +8,10 @@ services:
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=admin
-      - DOCKER_INFLUXDB_INIT_PASSWORD=P@ssw0rd
+      - DOCKER_INFLUXDB_INIT_PASSWORD=password
       - DOCKER_INFLUXDB_INIT_ORG=test
       - DOCKER_INFLUXDB_INIT_BUCKET=test
-      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=T0k3n
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=token
     volumes:
       - influxdb-data:/var/lib/influxdb2
     networks:

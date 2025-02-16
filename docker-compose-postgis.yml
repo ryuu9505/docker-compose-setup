@@ -1,16 +1,20 @@
 services:
   postgres-main:
-    image: postgis/postgis
+    image: postgres:17
     container_name: postgres-main
     restart: always
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: P@ssw0rd
+      POSTGRES_PASSWORD: password
     volumes:
       - volume-postgres-main:/var/lib/postgresql/data
     networks:
       - net-dev
+    command: >
+      bash -c "apt-get update &&
+               apt-get install -y postgis postgresql-17-postgis-3 &&
+               docker-entrypoint.sh postgres"
 
 volumes:
   volume-postgres-main:
