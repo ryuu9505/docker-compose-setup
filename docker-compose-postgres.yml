@@ -1,14 +1,14 @@
 services:
-  postgres-main:
+  postgres:
     image: postgres:17
-    container_name: postgres-main
+    container_name: postgres
     restart: always
     ports:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: password
     volumes:
-      - volume-postgres-main:/var/lib/postgresql/data
+      - volume-postgres:/var/lib/postgres/data
     networks:
       - net-dev
     command: >
@@ -17,7 +17,7 @@ services:
                docker-entrypoint.sh postgres"
 
 volumes:
-  volume-postgres-main:
+  volume-postgres:
 
 networks:
   net-dev:
