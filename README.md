@@ -10,7 +10,7 @@ Use this setup to quickly launch a containerized development environment.
 ## 📂 Included Files
 
 - `docker-compose-influxdb.yml` - InfluxDB setup  
-- `docker-compose-postgis.yml` - PostgreSQL with PostGIS  
+- `docker-compose-postgres.yml` - PostgreSQL 
 - `docker-compose-rabbitmq.yml` - RabbitMQ message broker  
 - `docker-compose-redis.yml` - Redis in-memory database  
 - `start.sh` - Script to start all services  

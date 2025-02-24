@@ -1,22 +1,19 @@
 #!/bin/bash
 
-# List of Docker Compose files
-COMPOSE_FILES=(
-  "docker-compose-influxdb.yml"
-  "docker-compose-postgis.yml"
-  "docker-compose-rabbitmq.yml"
-  "docker-compose-redis.yml"
-)
+# Load .env file
+if [ -f .env ]; then
+  source .env
+fi
 
-# Build the docker-compose down command
+# Build the docker-compose command
 CMD="docker-compose"
-for FILE in "${COMPOSE_FILES[@]}"; do
+for FILE in $COMPOSE_FILES; do
   CMD+=" -f $FILE"
 done
 
 # Stop all services using docker-compose
 echo "🛑 Stopping all Docker Compose services..."
-$CMD down
+$CMD down -v
 
 # Force stop all running containers
 echo "⏳ Stopping all running containers..."

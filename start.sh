@@ -1,16 +1,13 @@
 #!/bin/bash
 
-# List of Docker Compose files to run
-COMPOSE_FILES=(
-  "docker-compose-influxdb.yml"
-  "docker-compose-postgis.yml"
-  "docker-compose-rabbitmq.yml"
-  "docker-compose-redis.yml"
-)
+# Load .env file
+if [ -f .env ]; then
+  source .env
+fi
 
 # Build the docker-compose command
 CMD="docker-compose"
-for FILE in "${COMPOSE_FILES[@]}"; do
+for FILE in $COMPOSE_FILES; do
   CMD+=" -f $FILE"
 done
 

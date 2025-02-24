@@ -1,6 +1,8 @@
 services:
   postgres:
-    image: postgres:17
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
     container_name: postgres
     restart: always
     ports:
@@ -8,14 +10,11 @@ services:
     environment:
       POSTGRES_PASSWORD: password
     volumes:
-      - volume-postgres:/var/lib/postgres/data
+      - volume-postgres:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
     networks:
       - net-dev
-    command: >
-      bash -c "apt-get update &&
-               apt-get install -y postgis postgresql-17-postgis-3 &&
-               docker-entrypoint.sh postgres"
-
+      
 volumes:
   volume-postgres:
 
