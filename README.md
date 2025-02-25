@@ -39,4 +39,4 @@ This will **stop all running containers and remove unused ones**.
 ## 🎯 Customization
 
 - Modify any `docker-compose-*.yml` file to customize the services.  
-- You can add **new services** by creating additional `docker-compose-<service>.yml` files.  
+- You can add **new services** by creating additional `docker-compose-<service>.yml` files and add it to the .env file.
